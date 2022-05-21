@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>My app</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<p th:text="'Hello, Workman!'" />
+
+<div th:each="workman : ${workmanList}">
+    <form th:text="${workman.getId()}"></form>
+    <p th:text="${workman.firstName}"></p>
+    <p th:text="${workman.lastName}"></p>
+    <p th:text="${workman.gender}"></p>
+    <p th:text="${workman.email}"></p>
+    <p th:text="${workman.password}"></p>
+</div>
+</body>
+</html>
