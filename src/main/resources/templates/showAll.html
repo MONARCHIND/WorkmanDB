@@ -8,7 +8,7 @@
 <p th:text="'Hello, Workman!'" />
 
 <div th:each="workman : ${workmanList}">
-    <form th:text="${workman.getId()}"></form>
+    <p th:text="${workman.getId()}"></p>
     <p th:text="${workman.firstName}"></p>
     <p th:text="${workman.lastName}"></p>
     <p th:text="${workman.gender}"></p>

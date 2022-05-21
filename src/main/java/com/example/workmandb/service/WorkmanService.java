@@ -3,7 +3,6 @@ package com.example.workmandb.service;
 import com.example.workmandb.model.Workman;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,9 +20,21 @@ public class WorkmanService {
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        List<Workman> listOfWorkman = (List<Workman>) session.createSQLQuery("SELECT * FROM Workman").addEntity(Workman.class).getResultList();
+        String sqlRequest = "SELECT * FROM Workman";
+        List<Workman> listOfWorkman = (List<Workman>) session.createSQLQuery(sqlRequest).addEntity(Workman.class).getResultList();
         session.getTransaction().commit();
         session.close();
         return listOfWorkman;
     }
+
+    public List<Workman> getAllMale(){
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        String sqlRequest = "SELECT * FROM Workman WHERE gender='Male'";
+        List<Workman> listOfMale = (List<Workman>) session.createSQLQuery(sqlRequest).addEntity(Workman.class).getResultList();
+        session.getTransaction().commit();
+        session.close();
+        return listOfMale;
+    }
+
 }

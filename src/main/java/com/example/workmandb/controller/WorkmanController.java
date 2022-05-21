@@ -12,7 +12,6 @@ import java.util.List;
 public class WorkmanController {
 
     WorkmanService workmanService;
-    Workman workman;
 
 
     public WorkmanController(WorkmanService workmanService) {
@@ -21,8 +20,14 @@ public class WorkmanController {
 
     @GetMapping("/showAll")
     public String showAllWorkman(Model model){
-        List<Workman> workmanList = (List<Workman>) workmanService.getAllWorkman();
+        List<Workman> workmanList = workmanService.getAllWorkman();
         model.addAttribute("workmanList", workmanList);
         return "showAll";
     }
+    @GetMapping("/showAllMale")
+        public String showAllMale(Model model){
+        List<Workman> maleList = workmanService.getAllMale();
+        model.addAttribute("maleList", maleList);
+        return "showAllMale";
+        }
 }
