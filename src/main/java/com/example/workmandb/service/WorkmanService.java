@@ -16,6 +16,7 @@ public class WorkmanService {
         this.sessionFactory = sessionFactory;
     }
 
+    @SuppressWarnings("unchecked")
     public List<Workman> getAllWorkman(){
 
         Session session = sessionFactory.openSession();
@@ -26,7 +27,7 @@ public class WorkmanService {
         session.close();
         return listOfWorkman;
     }
-
+    @SuppressWarnings("unchecked")
     public List<Workman> getAllMale(){
         Session session = sessionFactory.openSession();
         session.beginTransaction();
@@ -36,5 +37,15 @@ public class WorkmanService {
         session.close();
         return listOfMale;
     }
+    @SuppressWarnings("unchecked")
+    public List<Workman> findByName(String name){
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        String sqlRequest = "SELECT * FROM Workman WHERE first_name = " + "'" + name + "'";
+        List<Workman> foundedName = session.createSQLQuery(sqlRequest).addEntity(Workman.class).list();
+        session.getTransaction().commit();
+        session.close();
 
+        return foundedName;
+    }
 }

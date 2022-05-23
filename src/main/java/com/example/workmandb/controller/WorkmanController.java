@@ -5,6 +5,9 @@ import com.example.workmandb.service.WorkmanService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -30,4 +33,14 @@ public class WorkmanController {
         model.addAttribute("maleList", maleList);
         return "showAllMale";
         }
+
+
+
+        @GetMapping("/findByName/{name}")
+        public String findByName(@PathVariable("name") String name,Model model){
+        List<Workman> namesList = workmanService.findByName(name);
+        model.addAttribute("namesList", namesList);
+        return "findByName";
+        }
+
 }
