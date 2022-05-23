@@ -7,7 +7,12 @@
 <body>
 <p th:text="'Hello, Workman!'" />
 
-<button onclick="window.location.href='/showAllMale'" s>Show all males</button>
+<button onclick="window.location.href='/findById'" is>Find workman by id</button>
+<button onclick="window.location.href='/findByName'" is>Find workman by name</button>
+<button onclick="window.location.href='/findBySurname'" is>Find workman by surname</button>
+
+<button onclick="window.location.href='/showAllMale'" is>Show the List of males</button>
+<button onclick="window.location.href='/showAllFemale'" is>Show the List of females</button>
 
 <div th:each="workman : ${workmanList}">
     <p th:text="${workman.getId()}"></p>

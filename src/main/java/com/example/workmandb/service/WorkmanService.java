@@ -38,6 +38,29 @@ public class WorkmanService {
         return listOfMale;
     }
     @SuppressWarnings("unchecked")
+    public List<Workman> getAllFemale(){
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        String sqlRequest = "SELECT * FROM Workman WHERE gender='Female'";
+        List<Workman> listOfFemale = (List<Workman>) session.createSQLQuery(sqlRequest).addEntity(Workman.class).getResultList();
+        session.getTransaction().commit();
+        session.close();
+        return listOfFemale;
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Workman> findById(int id){
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        String sqlRequest = "SELECT * FROM Workman WHERE id = " + "'" + id + "'";
+        List<Workman> surnames = session.createSQLQuery(sqlRequest).addEntity(Workman.class).list();
+        session.getTransaction().commit();
+        session.close();
+
+        return surnames;
+    }
+
+    @SuppressWarnings("unchecked")
     public List<Workman> findByName(String name){
         Session session = sessionFactory.openSession();
         session.beginTransaction();
@@ -47,5 +70,16 @@ public class WorkmanService {
         session.close();
 
         return foundedName;
+    }
+    @SuppressWarnings("unchecked")
+    public List<Workman> findBySurname(String surname){
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        String sqlRequest = "SELECT * FROM Workman WHERE last_name = " + "'" + surname + "'";
+        List<Workman> surnames = session.createSQLQuery(sqlRequest).addEntity(Workman.class).list();
+        session.getTransaction().commit();
+        session.close();
+
+        return surnames;
     }
 }
