@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>My app</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<div th:each="surnames : ${surnameList}">
+    <p th:text="${surnames.id}"></p>
+    <p th:text="${surnames.firstName}"></p>
+    <p th:text="${surnames.lastName}"></p>
+    <p th:text="${surnames.gender}"></p>
+    <p th:text="${surnames.email}"></p>
+    <p th:text="${surnames.password}"></p>
+</div>
+<button onclick="window.location.href='/showAll'" is>Back to full list</button>
+</body>
+</html>

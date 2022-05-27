@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>My app</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<p th:text="'This keep all males!'" />
+<button onclick="window.location.href='/showAll'" is>Back to full list</button>
+<div th:each="male : ${maleList}">
+    <p th:text="${male.id}"></p>
+    <p th:text="${male.firstName}"></p>
+    <p th:text="${male.lastName}"></p>
+    <p th:text="${male.gender}"></p>
+    <p th:text="${male.email}"></p>
+    <p th:text="${male.password}"></p>
+</div>
+
+</body>
+</html>
